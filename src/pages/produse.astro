@@ -2,7 +2,8 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import ProductCard from '~/components/ProductCard.astro';
 import ContactCTA from '~/components/ContactCTA.astro';
-import { categoryLabels, productsByCategory, type Category } from '~/data/products';
+import { Icon } from 'astro-icon/components';
+import { categoryLabels, categoryDescriptions, productsByCategory, type Category } from '~/data/products';
 import { business } from '~/data/business';
 
 const groups = productsByCategory();
@@ -12,7 +13,7 @@ const categoriesInOrder = (Object.keys(categoryLabels) as Category[])
 
 <BaseLayout
   title="Produse"
-  description={`Descoperă produsele noastre: torturi, prăjituri, cozonaci, plăcinte și pâine, făcute zilnic la ${business.name} în ${business.address.city}.`}
+  description={`Descoperă produsele ${business.name}: cozonaci, strudele, croissante, brânzoaică, chifle, baghete și produse pentru înmormântare. Făcute zilnic în ${business.address.city}.`}
   path="/produse"
 >
   <section class="mx-auto max-w-6xl px-4 pt-12 md:pt-16 pb-6">
@@ -25,16 +26,43 @@ const categoriesInOrder = (Object.keys(categoryLabels) as Category[])
     </p>
   </section>
 
+  <!-- Quick category nav -->
+  <section class="mx-auto max-w-6xl px-4 pb-2">
+    <div class="flex flex-wrap gap-2">
+      {categoriesInOrder.map((cat) => (
+        <a
+          href={`#${cat}`}
+          class="inline-flex items-center gap-1.5 rounded-full bg-cream-100 ring-1 ring-brand-100 px-3 py-1.5 text-sm font-medium text-brand-900/80 hover:bg-brand-100 hover:text-brand-700 transition"
+        >
+          {categoryLabels[cat]}
+        </a>
+      ))}
+    </div>
+  </section>
+
   {categoriesInOrder.map((cat) => (
-    <section class="mx-auto max-w-6xl px-4 py-10" id={cat}>
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-brand-900 mb-6">
+    <section class="mx-auto max-w-6xl px-4 py-10 scroll-mt-24" id={cat}>
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-brand-900">
         {categoryLabels[cat]}
       </h2>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {categoryDescriptions[cat] && (
+        <p class="mt-2 text-brand-900/70 max-w-3xl">
+          {categoryDescriptions[cat]}
+        </p>
+      )}
+      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {groups[cat].map((p) => <ProductCard product={p} />)}
       </div>
     </section>
   ))}
+
+  <!-- Note about photos -->
+  <section class="mx-auto max-w-6xl px-4 pb-6">
+    <p class="text-sm text-brand-900/60 italic flex items-start gap-2">
+      <Icon name="lucide:camera" class="size-4 mt-0.5 shrink-0" />
+      Pozele pentru o parte din produse sunt în pregătire. Pentru detalii sau imagini suplimentare, ne puteți suna oricând.
+    </p>
+  </section>
 
   <section class="mx-auto max-w-6xl px-4 py-16">
     <ContactCTA heading="Doriți să comandați?" />

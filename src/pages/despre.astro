@@ -5,30 +5,40 @@ import { Icon } from 'astro-icon/components';
 import { business } from '~/data/business';
 
 const values = [
-  { icon: 'lucide:wheat',     title: 'Ingrediente alese', text: 'Făină, unt și ouă de calitate, selectate cu grijă pentru fiecare rețetă.' },
-  { icon: 'lucide:croissant', title: 'Rețete tradiționale', text: 'Rețete moștenite, perfecționate de-a lungul anilor în patiseria noastră.' },
-  { icon: 'lucide:heart',     title: 'Făcut cu pasiune', text: 'Fiecare produs iese din cuptorul nostru pentru că ne pasă de gustul lui.' },
+  { icon: 'lucide:wheat',     title: 'Ingrediente naturale', text: 'Făină, unt, ouă și nuci de calitate, atent selectate pentru fiecare rețetă.' },
+  { icon: 'lucide:croissant', title: 'Rețete tradiționale', text: 'Rețete moștenite din generație în generație, perfecționate în patiseria noastră.' },
+  { icon: 'lucide:heart',     title: 'Făcut manual',         text: 'Cozonacii și produsele speciale sunt frământate și modelate manual, cu pasiune.' },
 ];
 ---
 
 <BaseLayout
   title="Despre noi"
-  description={`Povestea ${business.name} — patiserie artizanală în ${business.address.city}, cu rețete tradiționale și ingrediente atent alese.`}
+  description={`Povestea ${business.name} — patiserie clujeană cu peste 25 de ani de tradiție, rețete moștenite și ingrediente atent alese.`}
   path="/despre"
 >
   <section class="mx-auto max-w-4xl px-4 pt-12 md:pt-16 pb-10">
     <h1 class="font-display text-4xl md:text-5xl font-semibold text-brand-900">
       Despre noi
     </h1>
+    <p class="mt-3 text-base font-medium text-brand-700 italic">
+      {business.slogan}
+    </p>
     <div class="mt-6 space-y-5 text-lg text-brand-900/80 leading-relaxed">
       <p>
-        {business.name} a luat naștere din dragostea pentru patiseria de calitate și pentru rețetele
-        tradiționale. În fiecare dimineață, în {business.address.city}, coacem cu aceeași grijă ca
-        prima zi — pentru că fiecare client merită un produs proaspăt, gustos și onest.
+        Noi suntem <strong>{business.name}</strong>, brandul clujean care de peste 25 de ani aduce în
+        viața voastră produse atent frământate, modelate și coapte pentru plăcerea propriilor papile gustative.
       </p>
       <p>
-        <em>[Această secțiune va fi completată cu povestea reală a patiseriei: anul înființării,
-        ce o face specială, eventual o fotografie cu fondatorul/echipa.]</em>
+        Din generație în generație, pasiunea pentru cozonaci, strudele și croissante ne-a adus aproape
+        și ne-a convins să împărțim cu dragii noștri ardeleni dragostea pentru produsele de patiserie.
+      </p>
+      <p>
+        Pentru a fi în linie cu tihna ardelenească, dulcele nostru este produs doar cu ingrediente naturale,
+        atent selectate de către specialiștii noștri. Fie că ți s-a făcut poftă azi de un cozonac exact ca
+        în copilărie, fie că ai o comandă mai mare pentru o ocazie aparte, noi suntem aici pentru tine.
+      </p>
+      <p class="font-display text-xl text-brand-700">
+        {business.name}, din respect pentru voi.
       </p>
     </div>
   </section>
@@ -44,6 +54,30 @@ const values = [
           <p class="mt-2 text-sm text-brand-900/70 leading-relaxed">{v.text}</p>
         </div>
       ))}
+    </div>
+  </section>
+
+  <!-- Reviews link -->
+  <section class="mx-auto max-w-4xl px-4 py-12">
+    <div class="rounded-3xl bg-cream-100 ring-1 ring-brand-100 p-8 text-center">
+      <div class="inline-flex size-12 items-center justify-center rounded-xl bg-white text-brand-600 ring-1 ring-brand-100">
+        <Icon name="lucide:star" class="size-6" />
+      </div>
+      <h2 class="mt-4 font-display text-2xl md:text-3xl text-brand-900">
+        Ce spun clienții noștri
+      </h2>
+      <p class="mt-2 text-brand-900/70 max-w-xl mx-auto">
+        Recenziile noastre sunt pe Google Maps. Mulțumim tuturor celor care au avut grijă să ne lase un cuvânt bun.
+      </p>
+      <a
+        href={business.mapLink}
+        target="_blank"
+        rel="noopener"
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100 shadow-sm hover:bg-brand-100 transition"
+      >
+        <Icon name="lucide:external-link" class="size-4" />
+        Vezi recenziile pe Google
+      </a>
     </div>
   </section>
 

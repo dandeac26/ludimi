@@ -9,7 +9,7 @@ import { featuredProducts } from '~/data/products';
 
 <BaseLayout
   title="Acasă"
-  description={`${business.name} — patiserie artizanală în ${business.address.city}. Torturi, prăjituri, cozonaci și plăcinte făcute zilnic. Comenzi la ${business.phoneDisplay}.`}
+  description={`${business.name} — patiserie artizanală în ${business.address.city}. Cozonaci, strudele, croissante și produse pentru înmormântare. Comenzi la ${business.phoneDisplay}.`}
   path="/"
   includeLocalBusinessSchema={true}
 >
@@ -24,6 +24,9 @@ import { featuredProducts } from '~/data/products';
         <h1 class="mt-4 font-display text-4xl md:text-6xl font-semibold leading-tight text-brand-900">
           {business.tagline}
         </h1>
+        <p class="mt-3 text-base font-medium text-brand-700 italic">
+          {business.slogan}
+        </p>
         <p class="mt-5 text-lg text-brand-900/70 leading-relaxed max-w-xl">
           {business.shortDescription}
         </p>
@@ -47,17 +50,20 @@ import { featuredProducts } from '~/data/products';
 
       <div class="relative">
         <div class="aspect-[4/5] rounded-3xl bg-gradient-to-br from-brand-100 to-cream-200 overflow-hidden ring-1 ring-brand-100 shadow-xl">
-          <!-- Replace with a real hero photo -->
-          <div class="h-full w-full flex items-center justify-center text-brand-700/50">
-            <Icon name="lucide:image" class="size-24" />
-          </div>
+          <img
+            src="/images/products/cozonac.jpg"
+            alt="Cozonac Ludimi cu nucă"
+            class="h-full w-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
         </div>
         <div class="absolute -bottom-4 -left-4 rounded-2xl bg-white p-4 shadow-lg ring-1 ring-brand-100 hidden sm:block">
           <div class="flex items-center gap-3">
             <Icon name="lucide:wheat" class="size-8 text-brand-600" />
             <div>
-              <div class="font-display text-lg text-brand-900">Ingrediente alese</div>
-              <div class="text-xs text-brand-900/60">Rețete tradiționale</div>
+              <div class="font-display text-lg text-brand-900">Cozonacul Ludimi</div>
+              <div class="text-xs text-brand-900/60">Produsul nostru de top</div>
             </div>
           </div>
         </div>
@@ -102,6 +108,43 @@ import { featuredProducts } from '~/data/products';
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {featuredProducts.map((p) => <ProductCard product={p} />)}
+    </div>
+  </section>
+
+  <!-- ORDERING MODEL -->
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="rounded-3xl bg-cream-100 ring-1 ring-brand-100 p-6 md:p-10">
+      <div class="flex items-center gap-3 text-brand-700">
+        <Icon name="lucide:info" class="size-5" />
+        <span class="text-sm uppercase tracking-wider font-semibold">Cum comandați</span>
+      </div>
+      <div class="mt-4 grid gap-6 md:grid-cols-2">
+        <div>
+          <h3 class="font-display text-2xl text-brand-900">Persoane fizice</h3>
+          <p class="mt-2 text-brand-900/75 leading-relaxed">
+            Nu avem un magazin deschis publicului. Comenzile se preiau exclusiv telefonic,
+            iar produsele se ridică direct de la sediul nostru din
+            <strong>{business.address.street}, {business.address.city}</strong>.
+            Nu efectuăm livrări către persoane fizice.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-2xl text-brand-900">Pentru afaceri</h3>
+          <p class="mt-2 text-brand-900/75 leading-relaxed">
+            Colaborăm cu grădinițe, fast-food-uri și alte unități pentru livrări recurente
+            de chifle, baghete și produse de patiserie. Sunați-ne pentru detalii și prețuri.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6">
+        <a
+          href={`tel:${business.phone}`}
+          class="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-700 transition"
+        >
+          <Icon name="lucide:phone" class="size-4" />
+          Sună acum: {business.phoneDisplay}
+        </a>
+      </div>
     </div>
   </section>
 

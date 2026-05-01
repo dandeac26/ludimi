@@ -1,56 +1,63 @@
 /**
  * Single source of truth for business info.
- * Update this file with your dad's real details — everything on the site
- * (header, footer, contact page, JSON-LD schema, OG tags) reads from here.
+ * Everything on the site (header, footer, contact page, JSON-LD schema, OG tags)
+ * reads from here.
  */
 
 export const business = {
   // ----- Identity -----
-  name: 'Ludimi',                            // TODO: confirm exact name
-  legalName: 'Ludimi SRL',                   // optional, for footer fine print
+  name: 'Ludimi',
+  legalName: 'Ludimi Prodcom SRL',
   tagline: 'Patiserie artizanală în Cluj-Napoca',
+  slogan: 'Din respect pentru calitate',
   shortDescription:
-    'Prăjituri, torturi și produse de patiserie făcute zilnic, cu ingrediente atent alese, în inima Clujului.',
+    'Cozonaci, strudele, croissante și produse de patiserie făcute zilnic, cu ingrediente atent alese, în inima Clujului.',
 
   // ----- Contact -----
-  phone: '+40 000 000 000',                  // TODO
-  phoneDisplay: '0000 000 000',              // formatted for display
-  email: 'contact@example.ro',               // optional — set up via Cloudflare Email Routing
+  // International format for tel: links; display format is human-readable.
+  phone: '+40745585562',
+  phoneDisplay: '0745 585 562',
+  phoneSecondary: '+40745950839',
+  phoneSecondaryDisplay: '0745 950 839',
+  email: 'deacdany@yahoo.com',
 
   // ----- Location -----
   address: {
-    street: 'Strada Exemplu nr. 1',
+    street: 'Str. Livezii nr. 11',
     city: 'Cluj-Napoca',
     region: 'Cluj',
-    postalCode: '400000',
+    postalCode: '400139',
     country: 'RO',
   },
-  // Get these by right-clicking your shop on Google Maps → "What's here?"
+  // Approximate — refine by right-clicking the exact spot on Google Maps → "What's here?"
   geo: {
     latitude: 46.7712,
     longitude: 23.6236,
   },
-  // Embed URL: on Google Maps → Share → Embed a map → copy the src= value
+  // Keyless embed via output=embed. Replace later with a Place embed
+  // (Google Maps → Share → Embed) for a richer card with the business name.
   mapEmbedUrl:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10936.0!2d23.6236!3d46.7712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s!2sCluj-Napoca!5e0!3m2!1sro!2sro',
+    'https://maps.google.com/maps?q=Str.+Livezii+11,+Cluj-Napoca&t=&z=16&ie=UTF8&iwloc=&output=embed',
+  // Direct link people can click to open the location / leave a review.
+  mapLink: 'https://www.google.com/maps/search/?api=1&query=Ludimi+Prodcom+Cluj-Napoca',
 
   // ----- Hours -----
-  // Use 24h format. Use null to mark closed.
+  // 24h format. Use null to mark closed.
   hours: [
-    { day: 'Luni',     open: '07:00', close: '20:00' },
-    { day: 'Marți',    open: '07:00', close: '20:00' },
-    { day: 'Miercuri', open: '07:00', close: '20:00' },
-    { day: 'Joi',      open: '07:00', close: '20:00' },
-    { day: 'Vineri',   open: '07:00', close: '20:00' },
-    { day: 'Sâmbătă',  open: '08:00', close: '18:00' },
+    { day: 'Luni',     open: '09:00', close: '20:00' },
+    { day: 'Marți',    open: '09:00', close: '20:00' },
+    { day: 'Miercuri', open: '09:00', close: '20:00' },
+    { day: 'Joi',      open: '09:00', close: '20:00' },
+    { day: 'Vineri',   open: '09:00', close: '20:00' },
+    { day: 'Sâmbătă',  open: null,    close: null    },
     { day: 'Duminică', open: null,    close: null    },
   ],
 
   // ----- Social -----
   social: {
-    facebook: '',                            // e.g. https://facebook.com/yourpage
-    instagram: '',                           // e.g. https://instagram.com/yourpage
-    whatsapp: '',                            // e.g. https://wa.me/40700000000
+    facebook: 'https://www.facebook.com/p/Ludimi-Prodcom-Srl-100063883012171/',
+    instagram: '',
+    whatsapp: '',
   },
 } as const;
 
