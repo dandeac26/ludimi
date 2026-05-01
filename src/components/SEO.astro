@@ -1,0 +1,96 @@
+---
+import { business } from '~/data/business';
+
+interface Props {
+  title: string;        // page-specific title (without business suffix)
+  description: string;  // 150–160 char meta description
+  path: string;         // e.g. '/', '/produse'
+  image?: string;       // OG image path under /public, e.g. '/og.jpg'
+  /** Set to true on the home/contact pages — embeds LocalBusiness JSON-LD */
+  includeLocalBusinessSchema?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  image = '/og.jpg',
+  includeLocalBusinessSchema = false,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const fullUrl = `${siteUrl}${path}`;
+const fullImage = `${siteUrl}${image}`;
+const fullTitle = `${title} | ${business.name}`;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Bakery',
+  name: business.name,
+  description: business.shortDescription,
+  url: siteUrl,
+  telephone: business.phone,
+  image: fullImage,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: business.address.street,
+    addressLocality: business.address.city,
+    addressRegion: business.address.region,
+    postalCode: business.address.postalCode,
+    addressCountry: business.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
+  },
+  openingHoursSpecification: business.hours
+    .filter((h) => h.open && h.close)
+    .map((h) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: dayOfWeekUrl(h.day),
+      opens: h.open,
+      closes: h.close,
+    })),
+  sameAs: [business.social.facebook, business.social.instagram].filter(Boolean),
+};
+
+function dayOfWeekUrl(roDay: string): string {
+  const map: Record<string, string> = {
+    'Luni': 'https://schema.org/Monday',
+    'Marți': 'https://schema.org/Tuesday',
+    'Miercuri': 'https://schema.org/Wednesday',
+    'Joi': 'https://schema.org/Thursday',
+    'Vineri': 'https://schema.org/Friday',
+    'Sâmbătă': 'https://schema.org/Saturday',
+    'Duminică': 'https://schema.org/Sunday',
+  };
+  return map[roDay] ?? roDay;
+}
+---
+
+<!-- Primary -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={fullUrl} />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={fullUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImage} />
+<meta property="og:locale" content="ro_RO" />
+<meta property="og:site_name" content={business.name} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImage} />
+
+<!-- Structured data: LocalBusiness/Bakery (only on selected pages) -->
+{includeLocalBusinessSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+)}

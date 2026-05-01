@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/*
+  Brand theme — adjust to your dad's preferences once we pick colors.
+  These define CSS custom properties that Tailwind v4 picks up via @theme.
+*/
+@theme {
+  --color-cream-50:  #fdf9f3;
+  --color-cream-100: #faf1e3;
+  --color-cream-200: #f3e2c4;
+  --color-brand-50:  #fbf5ee;
+  --color-brand-100: #f3e2c4;
+  --color-brand-500: #b07a3e;
+  --color-brand-600: #8f5e2a;
+  --color-brand-700: #6e4520;
+  --color-brand-900: #3d2510;
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-cream-50);
+  color: var(--color-brand-900);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

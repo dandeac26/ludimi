@@ -1,0 +1,53 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { Icon } from 'astro-icon/components';
+import { business } from '~/data/business';
+
+const values = [
+  { icon: 'lucide:wheat',     title: 'Ingrediente alese', text: 'Făină, unt și ouă de calitate, selectate cu grijă pentru fiecare rețetă.' },
+  { icon: 'lucide:croissant', title: 'Rețete tradiționale', text: 'Rețete moștenite, perfecționate de-a lungul anilor în patiseria noastră.' },
+  { icon: 'lucide:heart',     title: 'Făcut cu pasiune', text: 'Fiecare produs iese din cuptorul nostru pentru că ne pasă de gustul lui.' },
+];
+---
+
+<BaseLayout
+  title="Despre noi"
+  description={`Povestea ${business.name} — patiserie artizanală în ${business.address.city}, cu rețete tradiționale și ingrediente atent alese.`}
+  path="/despre"
+>
+  <section class="mx-auto max-w-4xl px-4 pt-12 md:pt-16 pb-10">
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-brand-900">
+      Despre noi
+    </h1>
+    <div class="mt-6 space-y-5 text-lg text-brand-900/80 leading-relaxed">
+      <p>
+        {business.name} a luat naștere din dragostea pentru patiseria de calitate și pentru rețetele
+        tradiționale. În fiecare dimineață, în {business.address.city}, coacem cu aceeași grijă ca
+        prima zi — pentru că fiecare client merită un produs proaspăt, gustos și onest.
+      </p>
+      <p>
+        <em>[Această secțiune va fi completată cu povestea reală a patiseriei: anul înființării,
+        ce o face specială, eventual o fotografie cu fondatorul/echipa.]</em>
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-6 md:grid-cols-3">
+      {values.map((v) => (
+        <div class="rounded-2xl bg-white p-6 ring-1 ring-brand-100 shadow-sm">
+          <div class="inline-flex size-12 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
+            <Icon name={v.icon} class="size-6" />
+          </div>
+          <h3 class="mt-4 font-display text-xl text-brand-900">{v.title}</h3>
+          <p class="mt-2 text-sm text-brand-900/70 leading-relaxed">{v.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <ContactCTA />
+  </section>
+</BaseLayout>

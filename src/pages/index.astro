@@ -1,0 +1,112 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ProductCard from '~/components/ProductCard.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { Icon } from 'astro-icon/components';
+import { business } from '~/data/business';
+import { featuredProducts } from '~/data/products';
+---
+
+<BaseLayout
+  title="Acasă"
+  description={`${business.name} — patiserie artizanală în ${business.address.city}. Torturi, prăjituri, cozonaci și plăcinte făcute zilnic. Comenzi la ${business.phoneDisplay}.`}
+  path="/"
+  includeLocalBusinessSchema={true}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 md:pt-20 md:pb-24 grid gap-10 md:grid-cols-2 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-700">
+          <Icon name="lucide:sparkles" class="size-3.5" />
+          Făcut zilnic în Cluj-Napoca
+        </span>
+        <h1 class="mt-4 font-display text-4xl md:text-6xl font-semibold leading-tight text-brand-900">
+          {business.tagline}
+        </h1>
+        <p class="mt-5 text-lg text-brand-900/70 leading-relaxed max-w-xl">
+          {business.shortDescription}
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href={`tel:${business.phone}`}
+            class="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-brand-700 transition"
+          >
+            <Icon name="lucide:phone" class="size-5" />
+            Comandă: {business.phoneDisplay}
+          </a>
+          <a
+            href="/produse"
+            class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-brand-700 ring-1 ring-brand-100 hover:bg-cream-100 transition"
+          >
+            Vezi produsele
+            <Icon name="lucide:arrow-right" class="size-4" />
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="aspect-[4/5] rounded-3xl bg-gradient-to-br from-brand-100 to-cream-200 overflow-hidden ring-1 ring-brand-100 shadow-xl">
+          <!-- Replace with a real hero photo -->
+          <div class="h-full w-full flex items-center justify-center text-brand-700/50">
+            <Icon name="lucide:image" class="size-24" />
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -left-4 rounded-2xl bg-white p-4 shadow-lg ring-1 ring-brand-100 hidden sm:block">
+          <div class="flex items-center gap-3">
+            <Icon name="lucide:wheat" class="size-8 text-brand-600" />
+            <div>
+              <div class="font-display text-lg text-brand-900">Ingrediente alese</div>
+              <div class="text-xs text-brand-900/60">Rețete tradiționale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="bg-brand-100/40 border-y border-brand-100/60">
+    <div class="mx-auto max-w-6xl px-4 py-8 grid gap-6 sm:grid-cols-3 text-center">
+      <div class="flex items-center justify-center gap-3">
+        <Icon name="lucide:clock" class="size-6 text-brand-600" />
+        <span class="text-sm font-medium text-brand-900">Coapte în fiecare dimineață</span>
+      </div>
+      <div class="flex items-center justify-center gap-3">
+        <Icon name="lucide:heart" class="size-6 text-brand-600" />
+        <span class="text-sm font-medium text-brand-900">Rețete de familie</span>
+      </div>
+      <div class="flex items-center justify-center gap-3">
+        <Icon name="lucide:map-pin" class="size-6 text-brand-600" />
+        <span class="text-sm font-medium text-brand-900">În inima Clujului</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="mx-auto max-w-6xl px-4 py-16 md:py-24">
+    <div class="flex items-end justify-between gap-4 mb-10">
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold text-brand-900">
+          Cele mai îndrăgite produse
+        </h2>
+        <p class="mt-2 text-brand-900/70">O selecție din ce coacem în fiecare zi.</p>
+      </div>
+      <a
+        href="/produse"
+        class="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900"
+      >
+        Toate produsele <Icon name="lucide:arrow-right" class="size-4" />
+      </a>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {featuredProducts.map((p) => <ProductCard product={p} />)}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto max-w-6xl px-4 pb-20">
+    <ContactCTA />
+  </section>
+</BaseLayout>
