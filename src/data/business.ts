@@ -42,7 +42,7 @@ export const business = {
   // To get the exact URL: open Google Maps → navigate to the store → drag the yellow Pegman
   // onto Str. Livezii → click Share → Embed a map → copy the src= value and paste it here.
   streetViewEmbedUrl:
-    'https://maps.google.com/maps?q=Str.+Livezii+11,+Cluj-Napoca&layer=c&output=embed',
+    'https://maps.google.com/maps?q=46.7712,23.6236&layer=c&cbll=46.7712,23.6236&output=embed',
   // Direct link people can click to open the location / leave a review.
   mapLink: 'https://www.google.com/maps/search/?api=1&query=Ludimi+Prodcom+Cluj-Napoca',
 

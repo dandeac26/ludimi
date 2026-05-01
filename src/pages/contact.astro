@@ -3,8 +3,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { business } from '~/data/business';
 
-// Check if the building photo exists. User should save the screenshot to this path.
-const buildingPhoto = '/images/sediu.jpg';
 ---
 
 <BaseLayout
@@ -130,30 +128,16 @@ const buildingPhoto = '/images/sediu.jpg';
       )}
     </div>
 
-    <!-- Building photo + map -->
-    <div class="flex flex-col gap-4">
-      <!-- Building photo (save Google Street View screenshot to public/images/sediu.jpg) -->
-      <div class="rounded-2xl overflow-hidden ring-1 ring-brand-100 shadow-sm">
-        <img
-          src={buildingPhoto}
-          alt="Sediul Ludimi Prodcom — Str. Livezii nr. 11, Cluj-Napoca"
-          class="w-full object-cover max-h-72"
-          loading="lazy"
-          onerror="this.parentElement.style.display='none'"
-        />
-      </div>
-
-      <!-- Interactive map -->
-      <div class="rounded-2xl overflow-hidden ring-1 ring-brand-100 shadow-sm flex-1">
-        <iframe
-          src={business.mapEmbedUrl}
-          class="w-full min-h-[340px]"
-          style="border:0"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title={`Harta — ${business.name}`}
-        ></iframe>
-      </div>
+    <!-- Map -->
+    <div class="rounded-2xl overflow-hidden ring-1 ring-brand-100 shadow-sm h-[460px]">
+      <iframe
+        src={business.mapEmbedUrl}
+        class="w-full h-full"
+        style="border:0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title={`Hartă — ${business.name}`}
+      ></iframe>
     </div>
   </section>
 </BaseLayout>

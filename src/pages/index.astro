@@ -48,26 +48,52 @@ import { featuredProducts } from '~/data/products';
         </div>
       </div>
 
-      <div class="relative">
-        <div class="aspect-[4/5] rounded-3xl bg-gradient-to-br from-brand-100 to-cream-200 overflow-hidden ring-1 ring-brand-100 shadow-xl">
-          <img
-            src="/images/products/cozonac.jpg"
-            alt="Cozonac Ludimi cu nucă"
-            class="h-full w-full object-cover"
-            loading="eager"
-            decoding="async"
-          />
+      <div class="relative" id="cozonac-carousel">
+        <div class="aspect-[4/5] rounded-3xl bg-white overflow-hidden ring-1 ring-brand-100 shadow-xl relative">
+          <img src="/images/products/CozonacNuca.png"  alt="Cozonac cu nucă"  class="carousel-slide h-full w-full object-contain absolute inset-0 transition-opacity duration-700 opacity-100" loading="eager" decoding="async" />
+          <img src="/images/products/CozonacMac.png"   alt="Cozonac cu mac"   class="carousel-slide h-full w-full object-contain absolute inset-0 transition-opacity duration-700 opacity-0"   loading="eager" decoding="async" />
+          <img src="/images/products/CozonacRahat.png" alt="Cozonac cu rahat" class="carousel-slide h-full w-full object-contain absolute inset-0 transition-opacity duration-700 opacity-0"   loading="eager" decoding="async" />
+          <img src="/images/products/CozonacCacao.png" alt="Cozonac cu cacao" class="carousel-slide h-full w-full object-contain absolute inset-0 transition-opacity duration-700 opacity-0"   loading="eager" decoding="async" />
         </div>
+
+        <!-- Badge -->
         <div class="absolute -bottom-4 -left-4 rounded-2xl bg-white p-4 shadow-lg ring-1 ring-brand-100 hidden sm:block">
           <div class="flex items-center gap-3">
             <Icon name="lucide:wheat" class="size-8 text-brand-600" />
             <div>
               <div class="font-display text-lg text-brand-900">Cozonacul Ludimi</div>
-              <div class="text-xs text-brand-900/60">Produsul nostru de top</div>
+              <div class="text-xs text-brand-900/60" id="cozonac-type">cu nucă</div>
             </div>
           </div>
         </div>
+
       </div>
+
+      <script>
+        (function () {
+          var slides = document.querySelectorAll('#cozonac-carousel .carousel-slide');
+          var label  = document.getElementById('cozonac-type');
+          var types  = ['cu nucă', 'cu mac', 'cu rahat', 'cu cacao'];
+          var current = 0;
+          var timer;
+
+          function goTo(index) {
+            slides[current].classList.remove('opacity-100');
+            slides[current].classList.add('opacity-0');
+
+            current = index;
+
+            slides[current].classList.remove('opacity-0');
+            slides[current].classList.add('opacity-100');
+
+            if (label) label.textContent = types[current];
+          }
+
+          function next() { goTo((current + 1) % slides.length); }
+
+          timer = setInterval(next, 3500);
+        })();
+      </script>
     </div>
   </section>
 
