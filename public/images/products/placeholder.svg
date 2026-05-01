@@ -4,7 +4,4 @@
     <circle cx="200" cy="130" r="42"/>
     <path d="M160 200h80l-10 30h-60z"/>
   </g>
-  <text x="200" y="260" font-family="system-ui, sans-serif" font-size="14" fill="#6e4520" text-anchor="middle">
-    Înlocuiește cu o fotografie reală
-  </text>
 </svg>

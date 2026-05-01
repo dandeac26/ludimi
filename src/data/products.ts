@@ -19,9 +19,9 @@ export const categoryLabels: Record<Category, string> = {
 
 export const categoryDescriptions: Partial<Record<Category, string>> = {
   cozonaci:
-    'Cozonacii noștri sunt produsul nostru de top — făcuți manual, după rețete de familie, doar cu ingrediente naturale.',
+    'Cozonacii noștri sunt produsul de top — făcuți manual, după rețete de familie, doar cu ingrediente naturale.',
   sandwich:
-    'Nu facem pâine. Producem doar chifle și baghete pentru sandwich-uri, ideale pentru fast-food-uri și unități de alimentație.',
+    'Nu facem pâine. Producem chifle și baghete pentru sandwich-uri, ideale pentru fast-food-uri și unități de alimentație.',
   inmormantare:
     'Pregătim toate produsele tradiționale necesare pentru pomeniri și înmormântări. Comenzile se preiau telefonic.',
 };
@@ -35,7 +35,7 @@ export type Product = {
   featured?: boolean;
 };
 
-const PLACEHOLDER = '/images/products/placeholder.svg';
+const PH = '/images/products/placeholder.svg';
 
 export const products: Product[] = [
   // ---------- Cozonaci ----------
@@ -43,9 +43,8 @@ export const products: Product[] = [
     slug: 'cozonac-nuca',
     name: 'Cozonac cu nucă',
     category: 'cozonaci',
-    description:
-      'Produsul nostru emblematic. Cozonac handmade, cu umplutură generoasă de nucă și ingrediente naturale.',
-    image: '/images/products/cozonac.jpg',
+    description: 'Produsul nostru emblematic. Handmade, cu umplutură generoasă de nucă și ingrediente naturale.',
+    image: '/images/products/CozonacNuca.png',
     featured: true,
   },
   {
@@ -53,31 +52,109 @@ export const products: Product[] = [
     name: 'Cozonac cu mac',
     category: 'cozonaci',
     description: 'Aceeași rețetă tradițională, cu umplutură fină de mac.',
-    image: PLACEHOLDER,
+    image: '/images/products/CozonacMac.png',
   },
   {
     slug: 'cozonac-rahat',
     name: 'Cozonac cu rahat',
     category: 'cozonaci',
     description: 'Cozonac cu rahat, exact ca în copilărie.',
-    image: PLACEHOLDER,
+    image: '/images/products/CozonacRahat.png',
   },
   {
     slug: 'cozonac-cacao',
     name: 'Cozonac cu cacao',
     category: 'cozonaci',
     description: 'Cozonac cu cremă de cacao, pentru iubitorii de ciocolată.',
-    image: PLACEHOLDER,
+    image: '/images/products/CozonacCacao.png',
   },
 
   // ---------- Patiserie ----------
   {
+    slug: 'strudel-visine',
+    name: 'Strudel cu vișine',
+    category: 'patiserie',
+    description: 'Foaie subțire cu umplutură de vișine.',
+    image: '/images/products/StrudelBasic.png',
+    featured: true,
+  },
+  {
+    slug: 'strudel-mere',
+    name: 'Strudel cu mere',
+    category: 'patiserie',
+    description: 'Foaie subțire cu mere și scorțișoară.',
+    image: '/images/products/StrudelBasic.png',
+  },
+  {
+    slug: 'strudel-caise',
+    name: 'Strudel cu caise',
+    category: 'patiserie',
+    description: 'Foaie subțire cu umplutură de caise.',
+    image: '/images/products/StrudelBasic.png',
+  },
+  {
+    slug: 'strudel-ciocolata',
+    name: 'Strudel cu ciocolată',
+    category: 'patiserie',
+    description: 'Foaie subțire cu umplutură de ciocolată.',
+    image: '/images/products/StrudelBasic.png',
+  },
+  {
+    slug: 'croissant-cioc-van',
+    name: 'Croissant ciocolată & vanilie',
+    category: 'patiserie',
+    description: 'Croissant cu cremă de ciocolată și vanilie.',
+    image: '/images/products/CroissantCiocVan.png',
+    featured: true,
+  },
+  {
+    slug: 'croissant-ciocolata',
+    name: 'Croissant cu ciocolată',
+    category: 'patiserie',
+    description: 'Croissant cu umplutură de ciocolată.',
+    image: '/images/products/CroissantCioc.png',
+  },
+  {
+    slug: 'croissant-cas',
+    name: 'Croissant cu caș',
+    category: 'patiserie',
+    description: 'Croissant cu umplutură de caș proaspăt.',
+    image: '/images/products/CroissantCas.png',
+  },
+  {
     slug: 'cuib-cu-nuca',
     name: 'Cuib cu nucă',
     category: 'patiserie',
-    description: 'Foitaj fraged, miez generos de nucă.',
-    image: '/images/products/cuib_cu_nuca.jpg',
-    featured: true,
+    description: 'Foitaj fraged cu miez generos de nucă.',
+    image: '/images/products/CuibNuca.png',
+  },
+  {
+    slug: 'baigli',
+    name: 'Baigli',
+    category: 'patiserie',
+    description: 'Rulou tradițional ardelenesc cu nucă sau mac.',
+    image: '/images/products/BaigliBasic.png',
+  },
+  {
+    slug: 'baton-mac',
+    name: 'Baton cu mac',
+    category: 'patiserie',
+    description: 'Baton pufos cu semințe de mac.',
+    image: '/images/products/BatonMac.png',
+  },
+  {
+    slug: 'branzoaica',
+    name: 'Brânzoaică',
+    category: 'patiserie',
+    description: 'Aluat fraged cu umplutură de brânză dulce.',
+    image: PH,
+  },
+  {
+    slug: 'chec',
+    name: 'Chec',
+    category: 'patiserie',
+    description: 'Chec de casă, simplu sau cu adaosuri.',
+    image: PH,
   },
   {
     slug: 'malai-in-lapte',
@@ -85,35 +162,6 @@ export const products: Product[] = [
     category: 'patiserie',
     description: 'Rețetă tradițională ardelenească, copt în lapte.',
     image: '/images/products/malai_in_lapte.jpg',
-    featured: true,
-  },
-  {
-    slug: 'strudele',
-    name: 'Strudele',
-    category: 'patiserie',
-    description: 'Foaie subțire, rulată cu diverse umpluturi.',
-    image: PLACEHOLDER,
-  },
-  {
-    slug: 'croissante',
-    name: 'Croissante',
-    category: 'patiserie',
-    description: 'Croissante cu diverse umpluturi.',
-    image: PLACEHOLDER,
-  },
-  {
-    slug: 'chec',
-    name: 'Chec',
-    category: 'patiserie',
-    description: 'Chec de casă, simplu sau cu adaosuri.',
-    image: PLACEHOLDER,
-  },
-  {
-    slug: 'branzoaica',
-    name: 'Brânzoaică',
-    category: 'patiserie',
-    description: 'Aluat fraged cu umplutură de brânză dulce.',
-    image: PLACEHOLDER,
   },
 
   // ---------- Sandwich ----------
@@ -122,14 +170,14 @@ export const products: Product[] = [
     name: 'Chifle',
     category: 'sandwich',
     description: 'Chifle pentru sandwich-uri, inclusiv cu susan.',
-    image: PLACEHOLDER,
+    image: '/images/products/Chifle.png',
   },
   {
     slug: 'baghete',
     name: 'Baghete',
     category: 'sandwich',
     description: 'Baghete pentru sandwich-uri, inclusiv cu susan.',
-    image: PLACEHOLDER,
+    image: '/images/products/Bagheta.png',
   },
 
   // ---------- Înmormântare ----------
@@ -138,34 +186,34 @@ export const products: Product[] = [
     name: 'Colaci împletiți (japoneze)',
     category: 'inmormantare',
     description: 'Colaci tradiționali, împletiți manual, pentru pomeniri.',
-    image: PLACEHOLDER,
+    image: PH,
   },
   {
     slug: 'parastas',
     name: 'Parastas',
     category: 'inmormantare',
     description: 'Pregătit conform tradiției, pentru ceremonii.',
-    image: PLACEHOLDER,
+    image: PH,
   },
   {
     slug: 'colac-prapor',
     name: 'Colac de prapor',
     category: 'inmormantare',
-    image: PLACEHOLDER,
+    image: PH,
   },
   {
     slug: 'pom',
     name: 'Pom',
     category: 'inmormantare',
     description: 'Pom tradițional pentru ceremonii religioase.',
-    image: PLACEHOLDER,
+    image: PH,
   },
   {
     slug: 'prescuri',
     name: 'Prescuri',
     category: 'inmormantare',
     description: 'Prescuri pentru biserică și pomeniri.',
-    image: PLACEHOLDER,
+    image: PH,
   },
 ];
 
