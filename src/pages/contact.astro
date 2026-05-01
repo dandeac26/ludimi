@@ -127,16 +127,60 @@ import { business } from '~/data/business';
       )}
     </div>
 
-    <!-- Map -->
-    <div class="rounded-2xl overflow-hidden ring-1 ring-brand-100 shadow-sm bg-cream-100 min-h-[400px]">
-      <iframe
-        src={business.mapEmbedUrl}
-        class="w-full h-full min-h-[500px]"
-        style="border:0"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title={`Harta către ${business.name}`}
-      ></iframe>
+    <!-- Map / Street view -->
+    <div class="flex flex-col gap-2">
+      <!-- Tab buttons -->
+      <div class="flex gap-2">
+        <button
+          id="btn-streetview"
+          onclick="showStreetView()"
+          class="flex-1 rounded-xl bg-brand-600 py-2 text-sm font-semibold text-white transition"
+        >
+          Vedere stradă
+        </button>
+        <button
+          id="btn-map"
+          onclick="showMap()"
+          class="flex-1 rounded-xl bg-white ring-1 ring-brand-100 py-2 text-sm font-semibold text-brand-700 transition hover:bg-cream-100"
+        >
+          Hartă
+        </button>
+      </div>
+      <div class="rounded-2xl overflow-hidden ring-1 ring-brand-100 shadow-sm bg-cream-100">
+        <iframe
+          id="iframe-streetview"
+          src={business.streetViewEmbedUrl}
+          class="w-full min-h-[500px]"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title={`Vedere stradă — ${business.name}`}
+        ></iframe>
+        <iframe
+          id="iframe-map"
+          src={business.mapEmbedUrl}
+          class="w-full min-h-[500px] hidden"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title={`Harta către ${business.name}`}
+        ></iframe>
+      </div>
     </div>
   </section>
+
+  <script>
+    function showStreetView() {
+      document.getElementById('iframe-streetview')!.classList.remove('hidden');
+      document.getElementById('iframe-map')!.classList.add('hidden');
+      document.getElementById('btn-streetview')!.className = 'flex-1 rounded-xl bg-brand-600 py-2 text-sm font-semibold text-white transition';
+      document.getElementById('btn-map')!.className = 'flex-1 rounded-xl bg-white ring-1 ring-brand-100 py-2 text-sm font-semibold text-brand-700 transition hover:bg-cream-100';
+    }
+    function showMap() {
+      document.getElementById('iframe-map')!.classList.remove('hidden');
+      document.getElementById('iframe-streetview')!.classList.add('hidden');
+      document.getElementById('btn-map')!.className = 'flex-1 rounded-xl bg-brand-600 py-2 text-sm font-semibold text-white transition';
+      document.getElementById('btn-streetview')!.className = 'flex-1 rounded-xl bg-white ring-1 ring-brand-100 py-2 text-sm font-semibold text-brand-700 transition hover:bg-cream-100';
+    }
+  </script>
 </BaseLayout>

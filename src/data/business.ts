@@ -38,18 +38,23 @@ export const business = {
   // (Google Maps → Share → Embed) for a richer card with the business name.
   mapEmbedUrl:
     'https://maps.google.com/maps?q=Str.+Livezii+11,+Cluj-Napoca&t=&z=16&ie=UTF8&iwloc=&output=embed',
+  // Street view embed — shows the storefront.
+  // To get the exact URL: open Google Maps → navigate to the store → drag the yellow Pegman
+  // onto Str. Livezii → click Share → Embed a map → copy the src= value and paste it here.
+  streetViewEmbedUrl:
+    'https://maps.google.com/maps?q=Str.+Livezii+11,+Cluj-Napoca&layer=c&output=embed',
   // Direct link people can click to open the location / leave a review.
   mapLink: 'https://www.google.com/maps/search/?api=1&query=Ludimi+Prodcom+Cluj-Napoca',
 
   // ----- Hours -----
   // 24h format. Use null to mark closed.
   hours: [
-    { day: 'Luni',     open: '09:00', close: '20:00' },
-    { day: 'Marți',    open: '09:00', close: '20:00' },
-    { day: 'Miercuri', open: '09:00', close: '20:00' },
-    { day: 'Joi',      open: '09:00', close: '20:00' },
-    { day: 'Vineri',   open: '09:00', close: '20:00' },
-    { day: 'Sâmbătă',  open: null,    close: null    },
+    { day: 'Luni',     open: '08:00', close: '18:00' },
+    { day: 'Marți',    open: '08:00', close: '18:00' },
+    { day: 'Miercuri', open: '08:00', close: '18:00' },
+    { day: 'Joi',      open: '08:00', close: '18:00' },
+    { day: 'Vineri',   open: '08:00', close: '18:00' },
+    { day: 'Sâmbătă',  open: '08:00', close: '14:00' },
     { day: 'Duminică', open: null,    close: null    },
   ],
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import ContactCTA from '~/components/ContactCTA.astro';
+import Reviews from '~/components/Reviews.astro';
 import { Icon } from 'astro-icon/components';
 import { business } from '~/data/business';
 
@@ -57,29 +58,7 @@ const values = [
     </div>
   </section>
 
-  <!-- Reviews link -->
-  <section class="mx-auto max-w-4xl px-4 py-12">
-    <div class="rounded-3xl bg-cream-100 ring-1 ring-brand-100 p-8 text-center">
-      <div class="inline-flex size-12 items-center justify-center rounded-xl bg-white text-brand-600 ring-1 ring-brand-100">
-        <Icon name="lucide:star" class="size-6" />
-      </div>
-      <h2 class="mt-4 font-display text-2xl md:text-3xl text-brand-900">
-        Ce spun clienții noștri
-      </h2>
-      <p class="mt-2 text-brand-900/70 max-w-xl mx-auto">
-        Recenziile noastre sunt pe Google Maps. Mulțumim tuturor celor care au avut grijă să ne lase un cuvânt bun.
-      </p>
-      <a
-        href={business.mapLink}
-        target="_blank"
-        rel="noopener"
-        class="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100 shadow-sm hover:bg-brand-100 transition"
-      >
-        <Icon name="lucide:external-link" class="size-4" />
-        Vezi recenziile pe Google
-      </a>
-    </div>
-  </section>
+  <Reviews />
 
   <section class="mx-auto max-w-6xl px-4 py-12">
     <ContactCTA />
