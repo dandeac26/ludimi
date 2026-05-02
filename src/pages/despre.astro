@@ -6,9 +6,9 @@ import { Icon } from 'astro-icon/components';
 import { business } from '~/data/business';
 
 const values = [
-  { icon: 'lucide:wheat',     title: 'Ingrediente naturale', text: 'Făină, unt, ouă și nuci de calitate, atent selectate pentru fiecare rețetă.' },
+  { icon: 'lucide:wheat',     title: 'Ingrediente atent alese', text: 'Făină, ouă și nuci de calitate, atent selectate pentru fiecare rețetă.' },
   { icon: 'lucide:croissant', title: 'Rețete tradiționale', text: 'Rețete moștenite din generație în generație, perfecționate în patiseria noastră.' },
-  { icon: 'lucide:heart',     title: 'Făcut manual',         text: 'Cozonacii și produsele speciale sunt frământate și modelate manual, cu pasiune.' },
+  { icon: 'lucide:heart',     title: 'Făcut manual',         text: 'Cozonacii și produsele speciale sunt modelate manual, cu pasiune.' },
 ];
 ---
 
@@ -26,20 +26,22 @@ const values = [
     </p>
     <div class="mt-6 space-y-5 text-lg text-brand-900/80 leading-relaxed">
       <p>
-        Noi suntem <strong>{business.name}</strong>, brandul clujean care de peste 30 de ani aduce în
-        viața voastră produse atent frământate, modelate și coapte pentru plăcerea propriilor papile gustative.
+        Noi suntem <strong>{business.name}</strong> – un brand clujean care, de peste 30 de ani, aduce pe
+        mesele voastre gustul autentic al produselor de patiserie făcute cu grijă și pasiune.
       </p>
       <p>
-        Din generație în generație, pasiunea pentru cozonaci, strudele și croissante ne-a adus aproape
-        și ne-a convins să împărțim cu dragii noștri ardeleni dragostea pentru produsele de patiserie.
+        În fiecare cozonac, ștrudel sau croissant se regăsește tradiția transmisă din generație în generație,
+        dar și dorința noastră de a păstra vie bucuria lucrurilor simple. Am crescut alături de clujeni și am
+        învățat că cele mai bune gusturi sunt cele care te duc cu gândul acasă.
       </p>
       <p>
-        Pentru a fi în linie cu tihna ardelenească, dulcele nostru este produs doar cu ingrediente naturale,
-        atent selectate de către specialiștii noștri. Fie că ți s-a făcut poftă azi de un cozonac exact ca
-        în copilărie, fie că ai o comandă mai mare pentru o ocazie aparte, noi suntem aici pentru tine.
+        Punem preț pe tihna ardelenească și pe calitate. De aceea, folosim doar ingrediente atent
+        selecționate și respectăm procesul autentic de preparare – frământat, modelat și copt cu răbdare.
+        Fie că îți este poftă de un cozonac ca în copilărie sau pregătești o comandă pentru un moment
+        special, la noi găsești mereu gustul care adună oamenii împreună.
       </p>
       <p class="font-display text-xl text-brand-700">
-        {business.name}, din respect pentru voi.
+        {business.name} – din respect pentru voi, din respect pentru calitate.
       </p>
     </div>
   </section>
