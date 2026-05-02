@@ -9,9 +9,10 @@ interface Props {
   description: string;
   path: string;
   image?: string;
+  keywords?: string;
   includeLocalBusinessSchema?: boolean;
 }
-const { title, description, path, image, includeLocalBusinessSchema } = Astro.props;
+const { title, description, path, image, keywords, includeLocalBusinessSchema } = Astro.props;
 ---
 
 <!doctype html>
@@ -36,6 +37,7 @@ const { title, description, path, image, includeLocalBusinessSchema } = Astro.pr
       description={description}
       path={path}
       image={image}
+      keywords={keywords}
       includeLocalBusinessSchema={includeLocalBusinessSchema}
     />
   </head>

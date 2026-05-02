@@ -11,7 +11,7 @@ export const business = {
   tagline: 'Patiserie artizanală în Cluj-Napoca',
   slogan: 'Din respect pentru calitate',
   shortDescription:
-    'Cozonaci, strudele, croissante și produse de patiserie făcute zilnic, cu ingrediente atent alese, în inima Clujului.',
+    'Cozonaci, ștrudele, croissante și produse de patiserie făcute zilnic, cu ingrediente atent alese, în inima Clujului.',
 
   // ----- Contact -----
   // International format for tel: links; display format is human-readable.

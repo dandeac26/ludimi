@@ -6,6 +6,7 @@ interface Props {
   description: string;  // 150–160 char meta description
   path: string;         // e.g. '/', '/produse'
   image?: string;       // OG image path under /public, e.g. '/og.jpg'
+  keywords?: string;    // optional comma-separated keywords
   /** Set to true on the home/contact pages — embeds LocalBusiness JSON-LD */
   includeLocalBusinessSchema?: boolean;
 }
@@ -15,6 +16,7 @@ const {
   description,
   path,
   image = '/og.jpg',
+  keywords,
   includeLocalBusinessSchema = false,
 } = Astro.props;
 
@@ -74,6 +76,7 @@ function dayOfWeekUrl(roDay: string): string {
 <!-- Primary -->
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
 <link rel="canonical" href={fullUrl} />
 <meta name="robots" content="index, follow" />
 
