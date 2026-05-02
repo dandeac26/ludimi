@@ -103,7 +103,7 @@ export const products: Product[] = [
     slug: 'croissant-cioc-van',
     name: 'Croissant ciocolată & vanilie',
     category: 'patiserie',
-    description: 'Croissant cu cremă de ciocolată și vanilie.',
+    description: 'Croissant cu cremă de vanilie și toping de ciocolată.',
     image: '/images/products/CroissantCiocVan.png',
     featured: true,
   },
